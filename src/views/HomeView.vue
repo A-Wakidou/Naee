@@ -171,9 +171,90 @@
         </div>
       </div>
     </section>
-    <section id="find-us">
-
+    <section class="find-us">
+      <div class="f_titel">
+        <hr>
+        <h1>Où nous trouver ?</h1>
+      </div>
+      <div class="c_cart">
+        <span>
+          <h1>LE MANS</h1>
+          <p>Siège Social de l’entreprise et Usine de fabrication</p>
+          <p>33 Avenue Général De Gaulle 72000 Le Mans 02.43.45.18.20</p>
+        </span>
+        <img src="@/assets/image/carte.svg" alt="carte france">
+      </div>
+      <div class="f_ville">
+        <div class="f_right">
+          <span>
+            <h1>ANGERS</h1>
+            <p>Boutique Caliko - 19 Rue Saint-Julien (49100) <br>
+               L’atelier Coquille - 6 Rue St Blaise (49100)
+            </p>
+          </span>
+          <span>
+            <h1>AJACCIO</h1>
+            <p>L’adresse décoration - 18 Boulevard Danièle Casanova (20000)</p>
+          </span>
+          <span>
+            <h1>BORDEAUX</h1>
+            <p>Murmürs - 5 Rue Louis Combes (33000)</p>
+          </span>
+          <span>
+            <h1>LE MANS</h1>
+            <p>Pop-Up Store - B Comme Design, Passage du Commerce (72000)</p>
+          </span>
+        </div>
+        <div class="f_left">
+          <span>
+            <h1>LILLE</h1>
+            <p>Little and Tall - 39 rue Basse (59000) <br>
+              Momentum - 42 Rue des trois Mollettes (59800)
+            </p>
+          </span>
+          <span>
+            <h1>MARSEILLE</h1>
+            <p>Bulle - 21bis Rue Edmond Rostand (13006)</p>
+          </span>
+          <span>
+            <h1>NANTES</h1>
+            <p>Dodé - La boutique atelier - 10 Rue Franklin (44000)</p>
+          </span>
+          <span>
+            <h1>PARIS</h1>
+            <p>La petite Boutique - 20 Quai de la Mégisserie (75001)</p>
+          </span>
+        </div>
+      </div>
     </section>
+    <section class="newsletter">
+      <div class="n_titel">
+        <h1>Inscrivez vous à notre Newsletter</h1>
+        <p>Pour respecter nos valeurs, notre site-web est conçu le plus écologiquement possible, vous ne recevrez donc que des mails importants pour vous présenter les news de l’entreprise et ses produits (1 mail tous les 2-3 mois)</p>
+      </div>
+      <div class="n_form">
+        <form action="">
+          <input type="text" placeholder="Entrez votre adresse mail">
+          <button type="submit">S’abonner</button>
+        </form>
+      </div>
+    </section>
+    <footer>
+      <ul class="social_icon">
+          <li>Rejoignez nous sur les réseaux sociaux :</li>
+          <li><a href=""><img src="@/assets/image/instagram.svg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/image/tik-tok.svg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/image/linkedin.svg" alt=""></a></li>
+      </ul>
+      <ul class="menu">
+          <li><a href="#">Naee © </a></li> 
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Carrières</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Localisations</a></li>
+      </ul>
+    </footer>
   </div>
 </template>
 
@@ -198,13 +279,13 @@
   }
 
   .section-title hr {
-    height: 2px;
+    height: 3px;
     background-color: #FDCD41;
     border: none;
   }
 
   .section-title h2 {
-    background-color: #fff;
+    background-color: #fefefe;
     width: 22%;
     margin: 0;
     position: absolute;
@@ -219,7 +300,7 @@
     left: 70%;
   }
 
-  h1 {
+  .description h1 {
     font-weight: normal;
     color: #B35959;
     text-align: center;
@@ -282,7 +363,7 @@
   }
 
   #conception .paragraphe p {
-    color: white;
+    color: #fefefe;
   }
 
   #conception .grid {
@@ -321,5 +402,245 @@
   .carousel .details p {
     margin: 1rem;
   }
+
+  .find-us {
+
+    background-color: #B35959;
+    position: relative;
+    width: 100%;
+    height: 1200px;
+  }
+
+  .f_titel {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+  .f_titel hr{
+    height: 3px;
+    background-color: #D7C1A3;
+    border: none;
+    margin-right: auto;
+    position: relative;
+    top: 50px;
+  }
+
+  .f_titel h1 {
+    background-color: #B35959;
+    width: 22%;
+    margin: 0;
+    color: #FDCD41;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    left: 70%;
+    font-size: 60px;
+    font-weight: 400;
+  }
+
+  .c_cart {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .c_cart span {
+    position: relative;
+    font-family: pompiere;
+    color: #D7C1A3;
+    font-style: normal;
+    font-weight: 400;
+    text-align: right;
+    width: 15%;
+    left: 95px;
+    top: 50px;
+  }
+
+  .c_cart span h1 {
+    font-size: 40px;
+    margin: 0;
+  }
+
+  .c_cart span p {
+    font-size: 30px;
+    margin: 0;
+    line-height: 40px
+  }
+
+  .c_cart img {
+    position: relative;
+    right: 235px;
+    top: -10px;
+  }
+  .f_ville {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .f_ville span {
+    position: relative;
+    font-family: pompiere;
+    color: #D7C1A3;
+    font-style: normal;
+    font-weight: 400;
+    top: 50px;
+  }
+
+  .f_ville span h1 {
+    font-size: 40px;
+    margin: 0;
+    color: #FDCD41;
+    font-weight: 400;
+  }
+
+  .f_ville span p {
+    font-size: 30px;
+    margin: 10px 0px 35px;
+    line-height: 40px
+  }
+  .f_left{
+    position: relative;
+    text-align: left;
+    right: 100px;
+  }
+  .f_right{
+    position: relative;
+    left: 100px;
+    text-align: right;
+  }
+  .newsletter {
+    background-color: #D7C1A3;
+    position: relative;
+    width: 100%;
+    height: 450px;
+  }
+
+  .n_titel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .n_titel h1 {
+    position: relative;
+    font-family: 'Pompiere';
+    font-weight: 400;
+    font-size: 48px;
+    color: #B35959;
+    top: 20px;
+  }
+
+  .n_titel p {
+    position: relative;
+    font-family: 'Pompiere';
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 50px;
+    text-align: center;
+    width: 1100px;
+    height: 85px;
+  }
+  
+  .n_form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .n_form {
+    top: 20px;
+  }
+
+  .n_form input {
+    position: relative;
+    width: 1100px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    background-color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+    color: #B35959;
+    margin: 10px 0;
+  }
+
+  .n_form input::placeholder {
+    font-size: 30px;
+    left: 10px;
+  }
+
+  .n_form button {
+    position: relative;
+    width: 260px;
+    height: 55px;
+    border: none;
+    border-radius: 25px;
+    background-color: #FDCD41;
+    font-size: 30px;
+    font-weight: 400;
+    right: 100px;
+  }
+  footer {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: #fefefe;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  } 
+  footer .social_icon{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+      flex-wrap: wrap;
+  }
+  footer .social_icon li {
+    list-style: none;
+    font-size: 30px;
+    color: #B35959;
+  }
+  footer .social_icon li a {
+    font-size: 2em;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+  }
+  footer .social_icon li a:hover {
+      transform: translateY(-10px);
+  }
+  footer .menu{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+      flex-wrap: wrap;
+  } 
+  footer .menu li {
+    list-style: none;
+  }
+  footer .menu li a {
+    font-size: 30px;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+    text-decoration: none;
+    opacity: 0.75;
+    color: #FDCD41;
+  }
+  footer .menu li a:hover {
+    opacity: 1;
+  } 
+
+
 
 </style>

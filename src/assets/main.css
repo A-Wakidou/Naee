@@ -347,3 +347,13 @@
   [hidden] {
     display: none;
   }
+  ::-webkit-scrollbar {
+    width: 0.8em;
+    background-color: #D7C1A3;
+  }
+   
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #B35959;
+    border-radius: 10px;
+  }
