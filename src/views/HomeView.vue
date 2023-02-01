@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
   import { reactive } from 'vue'
+  import model from '@/components/model.vue';
 
   type StateShape = {
     currentLampe: number,
@@ -49,7 +50,10 @@
 
 </script>
 
+
 <template>
+  
+  <model/>
   <div class="container">
     <section class="presentation">
       <div class="description">
@@ -58,7 +62,7 @@
       </div>
       <div class="img">
         <img src="@/assets/image/promis.png" alt="Image de Promis">
-      </div>
+      </div> 
     </section>
     <section id="story">
       <div class="section-title">
