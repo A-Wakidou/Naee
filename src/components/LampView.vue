@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Renderer, Scene } from "@janvorisek/drie"; // always needed
-import { Mesh, BoxGeometry, MeshBasicMaterial, GLTFLoader, AxesHelper, GridHelper } from "@janvorisek/drie"; // mesh
+import { Mesh, BoxGeometry, MeshBasicMaterial, GLTFLoader, AxesHelper, GridHelper, OBJLoader } from "@janvorisek/drie"; // mesh
 import { PerspectiveCamera, OrbitControls, AmbientLight } from "@janvorisek/drie"; // camera
 </script>
 
@@ -23,10 +23,9 @@ import { PerspectiveCamera, OrbitControls, AmbientLight } from "@janvorisek/drie
         :size="3"
         :position="[0, 0, 0]" />
         <GridHelper :size="10" :division="10" />
-        <GLTFLoader
-          url="https://raw.githubusercontent.com/SamyGev/promis-back/main/Lampe_Naee.glb"
-          :rotate-speed="3"
-          :position="[-4, -7, 12]"
+        <OBJLoader
+          url="https://raw.githubusercontent.com/SamyGev/promis-back/main/Lampe_Naee.obj"
+          :position="[0, 0, 0]"
           :scale="[1, 1, 1]"
         />
       </Scene>
