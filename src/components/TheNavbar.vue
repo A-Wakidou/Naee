@@ -1,68 +1,151 @@
-<script setup lang="ts">
+<script setup lang="js">
 
+    const Hamburger = document.querySelector(".hamburger")
+    const navLinks = document.querySelector(".links")
+        
+    Hamburger.addEventListener('click',()=>{
+    navLinks.classList.toggle('mobile_menu')
+    })
 </script>
 
 
 <template>
-    <div class="navbar">
-        <RouterLink to="/" class="logo">
-            <img src="@/assets/image/logo.png" alt="Logo Naee">
-        </RouterLink>
-        <RouterLink to="#story">
-            <span>Notre histoire</span>
-        </RouterLink>
-        <RouterLink to="#conception">
-            <span>L'éco-conception</span>
-        </RouterLink>
-        <RouterLink to="#product">
-            <span>Nos produits</span>
-        </RouterLink>
-        <RouterLink to="#">
-            <span>Où nous trouver ?</span>
-        </RouterLink>
-    </div>
+        <nav class="bar">
+        <a href="#" class="logo">
+           <img src="../assets/image/logo.png" alt="">
+        </a> 
+        <div class="links">
+            <ul>
+                <li><a href="">Notre Histoire</a></li>
+                <li><a href="">L’éco-conception</a></li>
+                <li><a href="">Nos Produits</a></li>
+                <li><a href="">Où nous trouver?</a></li>
+            </ul>
+        </div>
+        <img class="hamburger" src="/menu.svg" alt="">
+    </nav>
 </template>
 
 <style scoped>
-    .navbar {
-        padding-top: 70px;
-        padding-bottom: 20px;
-        font-size: 24px;
-        border-bottom: 3px solid #FDCD41;
-    }
+    
+.bar
+{
+    position: fixed;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    z-index: 100;
+}
 
-    .navbar a {
-        color: inherit;
-        text-decoration: none;
-        display: inline-block;
-        cursor: pointer;
-    }
+.links
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 
-    .navbar a:not(:first-child) {
-        width: 200px;
-    }
+.links ul
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: wrap;
+    gap: 10px; 
+}
 
-    .navbar a:not(:first-child) :hover {
-        background-color: rgba(245, 245, 245, 0.622);
-        border-radius: 3px;
-    }
+.links a
+{
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #000;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
 
-    .navbar :not(:first-child) span {
-        width: 90%;
+.links a:hover
+{
+    background-color: #000;
+    color: #fff;
+}
+.hamburger
+{
+    display: none;
+    cursor: pointer;
+    width: 35px;
+    position: relative;
+}
+
+
+@media screen and (max-width: 1025px)
+{
+
+    .hamburger
+    {
         display: block;
-        padding: 5px;
     }
-
-    .logo {
-        width: inherit;
-        padding: 0 100px;
-        display: inline;
+    .links
+    {
+        top : 0;
+        right: 0;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.20);
+        backdrop-filter: blur(8px);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        margin: 0 100%;
     }
-
-    .logo img {
-        width: 250px;
-        height:50px;
+    .links.mobile_menu 
+    {
+    margin: 0 0;
     }
+    .links ul
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .links ul li
+    {
+        margin: 25px 0; 
+    }
+}
 
+@media screen and (max-width: 500px)
+{
+    .logo
+    {
+        margin-right: 0;
+        font-size: 14px;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+    }
+    .form
+    {
+        margin-right: 5px;
+        font-size: 0.7em;
+        transition: all 0.3s ease;
+    }
+    .fancy-bg 
+    {
+        width: 80%;
+        height: 90%;
+        margin: 0;
+    }
+}
 
 </style>

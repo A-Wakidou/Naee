@@ -1,52 +1,53 @@
 <script setup lang="ts">
 
-  import { reactive } from 'vue'
-  import model from '@/components/model.vue';
+ 
+import { reactive } from 'vue'
 
-  type StateShape = {
-    currentLampe: number,
-    lampes: {
-      name: string,
-      img: string,
-      price: number
-    }[]
-  }
+type StateShape = {
+  currentLampe: number,
+  lampes: {
+    name: string,
+    img: string,
+    price: number
+  }[]
+}
 
-  const state = reactive<StateShape>({
-    currentLampe: 1 as number,
-    lampes: [
-      {
-        name: 'Diane n°1',
-        img: '@/assets/image/promis.svg',
-        price: 59
-      },
-      {
-        name:'Diane n°2',
-        img:'@/assets/image/diane2.svg',
-        price: 59
-      },
-      {
-        name:'Diane n°3',
-        img:'@/assets/image/diane3.svg',
-        price: 59
-      }
-    ]
-  })
-
-  const goRight = ():void => {
-    if(state.currentLampe == 3) {
-      state.currentLampe = 1
-      return
+const state = reactive<StateShape>({
+  currentLampe: 1 as number,
+  lampes: [
+    {
+      name: 'Diane n°1',
+      img: '@/assets/image/promis.svg',
+      price: 59
+    },
+    {
+      name:'Diane n°2',
+      img:'@/assets/image/diane2.svg',
+      price: 59
+    },
+    {
+      name:'Diane n°3',
+      img:'@/assets/image/diane3.svg',
+      price: 59
     }
-    state.currentLampe += 1
+  ]
+})
+
+const goRight = ():void => {
+  if(state.currentLampe == 3) {
+    state.currentLampe = 1
+    return
   }
-  const goLeft = ():void => {
-    if(state.currentLampe == 1) {
-      state.currentLampe = 3
-      return
-    }
-    state.currentLampe -= 1
+  state.currentLampe += 1
+}
+const goLeft = ():void => {
+  if(state.currentLampe == 1) {
+    state.currentLampe = 3
+    return
   }
+  state.currentLampe -= 1
+}
+
 
 </script>
 
