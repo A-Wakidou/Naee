@@ -16,4 +16,14 @@ import TheNavbar from '@/components/TheNavbar.vue'
   body {
     font-family: 'Pompiere', cursive;
   }
+
+  .button {
+    background-color: #B35959;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 </style>

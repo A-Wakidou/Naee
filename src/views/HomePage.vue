@@ -1,13 +1,16 @@
 <script setup lang="ts">
 
   import { reactive } from 'vue'
+  import { useGlobalStore } from '@/stores/globalStore'
+  import type { User, Lamp } from "@/types"
 
   type StateShape = {
     currentLampe: number,
     lampes: {
       name: string,
       img: string,
-      price: number
+      price: number,
+      quantity: number
     }[]
   }
 
@@ -16,18 +19,21 @@
     lampes: [
       {
         name: 'Diane n°1',
-        img: '@/assets/image/promis.svg',
-        price: 59
+        img: '/diane1.svg',
+        price: 59,
+        quantity: 1
       },
       {
         name:'Diane n°2',
-        img:'@/assets/image/diane2.svg',
-        price: 59
+        img:'/diane2.svg',
+        price: 59,
+        quantity: 1
       },
       {
         name:'Diane n°3',
-        img:'@/assets/image/diane3.svg',
-        price: 59
+        img:'/diane3.svg',
+        price: 59,
+        quantity: 1
       }
     ]
   })
@@ -39,12 +45,25 @@
     }
     state.currentLampe += 1
   }
+
   const goLeft = ():void => {
     if(state.currentLampe == 1) {
       state.currentLampe = 3
       return
     }
     state.currentLampe -= 1
+  }
+
+  const addToCart = (item:Lamp):void => {
+    let index = useGlobalStore().cart.indexOf(item)
+    console.log(index);
+    
+    if( index > -1) {
+      useGlobalStore().cart[index].quantity++
+    }
+    else {
+      useGlobalStore().cart.push(item)
+    }
   }
 
 </script>
@@ -155,17 +174,16 @@
       </div>
       <div class="carousel">
         <div v-for="items, index in state.lampes" :key="items.img" >
-          <div v-if="state.currentLampe == index+1">
+          <div v-show="state.currentLampe == index+1">
             <div class="main">
               <img @click="goLeft" src="@/assets/image/arrow-left.svg" alt="Précédent">
-              <img v-show="state.currentLampe == 1" class="animate__animated animate__slideInRight animate__faster" src="@/assets/image/diane1.svg" alt="Promis" style="width:50%;">
-              <img v-show="state.currentLampe == 2" class="animate__animated animate__slideInRight animate__faster" src="@/assets/image/diane2.svg" alt="Promis" style="width:50%;">
-              <img v-show="state.currentLampe == 3" class="animate__animated animate__slideInRight animate__faster" src="@/assets/image/diane3.svg" alt="Promis" style="width:50%;">
+              <img class="animate__animated animate__slideInRight animate__faster" :src="items.img" alt="Promis" style="width:50%;">
               <img @click="goRight" src="@/assets/image/arrow-right.svg" alt="Suivant">
             </div>
             <div class="details">
               <p>{{ items.name }}</p>
               <p> {{ items.price }} € </p>
+              <button class="button" @click="addToCart(items)"> Ajouter au panier </button>
             </div>
           </div>
         </div>

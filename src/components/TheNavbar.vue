@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import { RouterLink } from 'vue-router';
+    import { useGlobalStore } from '@/stores/globalStore'
 </script>
 
 <template>
@@ -19,6 +20,9 @@
         <RouterLink to="#">
             <span>Où nous trouver ?</span>
         </RouterLink>
+        <RouterLink to="/panier">
+            <span v-if="useGlobalStore().cart.length > 0"> {{useGlobalStore().cart.length}} </span> <img class="cart" src="@/assets/image/cart.svg" alt="Panier">
+        </RouterLink>
     </div>
 </template>
 
@@ -28,6 +32,7 @@
         padding-bottom: 20px;
         font-size: 24px;
         border-bottom: 3px solid #FDCD41;
+        font-weight: bold;
     }
 
     .navbar a {
@@ -46,10 +51,24 @@
         border-radius: 3px;
     }
 
-    .navbar :not(:first-child) span {
+    .navbar :not(:first-child, :last-child) span {
         width: 90%;
         display: block;
         padding: 5px;
+    }
+
+    .navbar :last-child span {
+        font-size: 1rem;
+        border-radius: 50%;
+        padding: 1px 5px;
+        background-color: #D7C1A3;
+        color: white;
+        margin-right: -8px;
+    }
+
+    .cart {
+        vertical-align:bottom;
+        margin-bottom: 0.25rem;
     }
 
     .logo {
@@ -61,6 +80,10 @@
     .logo img {
         width: 250px;
         height:50px;
+    }
+
+    span {
+        display: inline;
     }
 
 
