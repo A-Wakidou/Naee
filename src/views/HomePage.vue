@@ -2,12 +2,16 @@
 
   import { reactive } from 'vue'
   import { useGlobalStore } from '@/stores/globalStore'
-  import type { User, Lamp } from "@/types"
+  // import type { User, Lamp } from "@/types"
+  import Products from '@/components/Products.vue'
 
   type StateShape = {
-    currentLampe: number,
+    isProductsModalOpen: boolean,
+    selectedLamp: number,
     lampes: {
       name: string,
+      intro: string,
+      description: string,
       img: string,
       price: number,
       quantity: number
@@ -15,22 +19,29 @@
   }
 
   const state = reactive<StateShape>({
-    currentLampe: 1 as number,
+    isProductsModalOpen: false,
+    selectedLamp: 1 as number,
     lampes: [
       {
-        name: 'Diane n°1',
+        name: 'LAMPE DIANE N°1',
+        intro: 'La lampe Diane n°1 est notre première lampe éco-conçue. Ce luminaire aux formes géométriques s\'accordera parfaitement avec votre intérieur, qu\'il soit ancien ou moderne.',
+        description: 'L\'achat de ce produit comprend le kit électrique et le kit esthétique en carton avec les vis relieuses.',
         img: '/diane1.svg',
         price: 59,
         quantity: 1
       },
       {
-        name:'Diane n°2',
+        name:'LAMPE DIANE N°2',
+        intro: 'La lampe Diane n°1 est notre première lampe éco-conçue. Ce luminaire aux formes géométriques s\'accordera parfaitement avec votre intérieur, qu\'il soit ancien ou moderne.',
+        description: 'L\'achat de ce produit comprend le kit électrique et le kit esthétique en carton avec les vis relieuses.',
         img:'/diane2.svg',
         price: 59,
         quantity: 1
       },
       {
-        name:'Diane n°3',
+        name:'LAMPE DIANE N°3',
+        intro: 'La lampe Diane n°1 est notre première lampe éco-conçue. Ce luminaire aux formes géométriques s\'accordera parfaitement avec votre intérieur, qu\'il soit ancien ou moderne.',
+        description: 'L\'achat de ce produit comprend le kit électrique et le kit esthétique en carton avec les vis relieuses.',
         img:'/diane3.svg',
         price: 59,
         quantity: 1
@@ -38,32 +49,41 @@
     ]
   })
 
-  const goRight = ():void => {
-    if(state.currentLampe == 3) {
-      state.currentLampe = 1
-      return
-    }
-    state.currentLampe += 1
-  }
+  // const goRight = ():void => {
+  //   if(state.currentLampe == 3) {
+  //     state.currentLampe = 1
+  //     return
+  //   }
+  //   state.currentLampe += 1
+  // }
 
-  const goLeft = ():void => {
-    if(state.currentLampe == 1) {
-      state.currentLampe = 3
-      return
-    }
-    state.currentLampe -= 1
-  }
+  // const goLeft = ():void => {
+  //   if(state.currentLampe == 1) {
+  //     state.currentLampe = 3
+  //     return
+  //   }
+  //   state.currentLampe -= 1
+  // }
 
-  const addToCart = (item:Lamp):void => {
-    let index = useGlobalStore().cart.indexOf(item)
-    console.log(index);
+  // const addToCart = (item:Lamp):void => {
+  //   let index = useGlobalStore().cart.indexOf(item)
+  //   console.log(index);
     
-    if( index > -1) {
-      useGlobalStore().cart[index].quantity++
-    }
-    else {
-      useGlobalStore().cart.push(item)
-    }
+  //   if( index > -1) {
+  //     useGlobalStore().cart[index].quantity++
+  //   }
+  //   else {
+  //     useGlobalStore().cart.push(item)
+  //   }
+  // }
+
+  function openProductsModal(n:number) {
+    state.selectedLamp = n
+    state.isProductsModalOpen = true
+  }
+
+  function closeProductsModal() {
+    state.isProductsModalOpen = false
   }
 
 </script>
@@ -75,7 +95,7 @@
         <img class="logo" src="@/assets/image/logo.png" alt="Logo Naee">
         <h1>Le luminaire éco-conçu</h1>
       </div>
-      <div class="img">
+      <div class="img-div">
         <img src="@/assets/image/promis.png" alt="Image de Promis">
       </div>
     </section>
@@ -89,7 +109,7 @@
           <img src="@/assets/image/svg1.svg" alt="">
         </div>
         <div>
-          <svg class="color-img-container" width="682" height="455" viewBox="0 0 682 455" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="682" height="455" viewBox="0 0 682 455" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M395.926 2.56776C317.275 -8.45265 167.143 20.0824 84.429 92.5432C30.3222 139.943 -9.95869 247.804 3.44853 295.832C33.2071 402.435 98.8502 385.264 168.888 427.632C238.927 470 411.225 456.514 476.692 429.245C513.358 405.762 601.599 331.176 661.229 220.695C735.767 82.5947 578.951 93.4643 552.905 78.6673C535.354 68.6957 494.239 16.3433 395.926 2.56776Z" fill="#FDCD41"/>
           </svg>
           <div class="paragraphe paragraphe-right">
@@ -131,16 +151,16 @@
         <h2 class="right">L'éco-conception</h2>
       </div>
       <div class="grid">
-        <div style="height: 500px;">
-          <div style="position: absolute;z-index: 1;">
-            <svg width="638" height="252" viewBox="0 0 638 252" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div style="height:500px">
+          <div style="position:relative">
+            <svg class="color-img-container" width="638" height="252" viewBox="0 0 638 252" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M534 9.5C473 -16.5002 342.609 22.5 287.5 22.5C130 22.5 46.5 18.6663 23 74.4999C-8.14607 148.5 -15.5 170.5 62 220.5C85.7177 235.802 198.217 240.772 304 231.5C429.5 220.5 498 289 599.5 220.5C660.273 195.235 632.635 118.018 622 74.4999C590 31.9999 585 52 534 9.5Z" fill="#B35959"/>
             </svg>
             <div class="paragraphe paragraphe-left">
               <p>L’éco-conception est le maître-mot de notre entreprise. Mais l’éco-conception c’est quoi? C’est une méthode de conception qui consiste à favoriser les ressources renouvelables, à prendre conscience du renouvellement du produit et de son recyclage et à valoriser le réemploi et/ou la réparation des matériaux. En bref, c’est la volonté de concevoir un produit respectant l’environnement et le développement durable.</p>
             </div>
           </div>
-          <div class="stickToTheTopElement">
+          <div class="bottomImgDiv">
             <svg width="634" height="404" viewBox="0 0 634 404" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M318.508 2.97929C200.007 8.14766 172.862 -20.808 87.6992 43.707L86.7968 44.3906C49.752 72.4515 5.41178 106.039 2.03131 145.402C-4.62956 222.964 8.55752 354.258 44.6649 383.944C67.9351 403.077 243.201 373.804 324.224 388.54C389.043 400.33 539.291 432.343 609.548 341.093C663.53 270.981 608.986 197.11 606.349 125.315C603.712 53.5207 575.683 38.4304 561.998 39.8595C511.215 33.5145 437.009 -2.18908 318.508 2.97929Z" fill="#FDCD41"/>
             </svg>
@@ -168,7 +188,41 @@
       </div>
     </section>
     <section id="products">
-      <div class="section-title">
+      <h2>Nos Produits</h2>
+      <div>
+        <img src="@/assets/image/icon.svg" alt="Icon">
+        <img src="@/assets/image/icon.svg" alt="Icon">
+        <img src="@/assets/image/icon.svg" alt="Icon">
+      </div>
+      <Products v-if="!state.isProductsModalOpen" @emit-product="openProductsModal" />
+      <div v-else class="products-modal">
+        <div>
+          <img src="@/assets/image/blank-image.svg" alt="Image vide">
+          <img src="@/assets/image/blank-image.svg" alt="Image vide">
+          <img src="@/assets/image/blank-image.svg" alt="Image vide">
+        </div>
+        <div>
+          <img :src="state.lampes[state.selectedLamp].img" :alt="state.lampes[state.selectedLamp].name">
+        </div>
+        <div>
+          <img src="@/assets/image/cancel.svg" alt="Fermer" @click="closeProductsModal()">
+          <h3>{{state.lampes[state.selectedLamp].name}}</h3>
+          <p>{{state.lampes[state.selectedLamp].intro}}</p>
+          <h4>Description</h4>
+          <p>{{state.lampes[state.selectedLamp].description}}</p>
+          <h4>{{state.lampes[state.selectedLamp].price}}€</h4>
+          <span>Taxes comprises</span>
+          <img src="@/assets/image/product-schema.svg" alt="Produit schema">
+        </div>
+      </div>
+      <div>
+        <img src="@/assets/image/icon.svg" alt="Icon">
+        <img src="@/assets/image/icon.svg" alt="Icon">
+        <img src="@/assets/image/icon.svg" alt="Icon">
+        <img src="@/assets/image/icon.svg" alt="Icon">
+        <img src="@/assets/image/icon.svg" alt="Icon">
+      </div>
+      <!-- <div class="section-title">
         <hr>
         <h2>Nos produits</h2>
       </div>
@@ -187,7 +241,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
     <section id="find-us">
 
@@ -253,11 +307,11 @@
     margin: 100px 0;
   }
 
-  .presentation .img img {
+  .presentation .img-div img {
     position: absolute;
     top: -60px;
-    left: 50%;
-    width: 37%;
+    left: 55%;
+    width: 30%;
     overflow: hidden;
   }
 
@@ -265,6 +319,7 @@
     padding: 0 5%;
     display: grid;
     grid-template-columns: 47.5% 47.5%;
+    text-align: center;
     grid-gap: 10rem 5%;
     font-size: 20px;
     font-weight: bold;
@@ -275,28 +330,35 @@
     position: relative;
   }
 
-  .grid img {
-    display: block;
-    margin: 0 auto;
+  .grid svg {
+    width: 100%;
   }
+
   .grid .paragraphe {
     width: 500px;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     top: 100px;
     text-align: center;
   }
   .grid .paragraphe-right {
-    right: 70px;
+    right: 170px;
   }
   .grid .paragraphe-left {
-    left: 70px;
+    left: 140px;
     top: 50px;
   }
   .grid .color-img-container {
+    z-index: 2;
     position: absolute;
-    z-index: 1;
-    top: 0;
+    left: 0px;
+  }
+
+  .bottomImgDiv {
+    position: absolute;
+    top: 130px;
+    left: 0;
+    right: 0
   }
 
   #conception .paragraphe p {
@@ -307,12 +369,56 @@
     grid-gap: 5rem 0;
     align-items: center;
   }
-  .stickToTheTopElement {
-    position: absolute;
-    top: 130px;
+
+  #products {
+    text-align: center;
+  }
+  #products > div:nth-child(2) {
+    margin-bottom: 3rem;
+  }
+  #products > div:nth-child(2) img{
+    width: 1rem;
+    margin: 0 1rem;
+  }
+  #products > div:nth-child(4) {
+    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 0 5%;
+  }
+  #products > div:nth-child(4) img{
+    display: block;
+    margin: 0 auto;
+  }
+  #products .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .products-modal {
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    padding: 0 5%;
+  }
+  .products-modal div:nth-child(2) img{
+    width: 100%;
+  }
+  .products-modal div:nth-child(3) {
+    text-align: left;
   }
 
-  .carousel {
+  .products-modal div:nth-child(3) span {
+    display: block;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  .products-modal div:nth-child(3) img {
+    display: block;
+  }
+  .products-modal div:nth-child(3) img:first-child {
+    margin-left: auto;
+  }
+
+  /* .carousel {
     margin-top: 8rem;
     overflow: hidden;
   }
@@ -338,6 +444,43 @@
 
   .carousel .details p {
     margin: 1rem;
+  } */
+
+  @media screen and (max-width: 480px) {
+    .grid {
+      display: block;
+      font-size: 16px;
+    }
+    .presentation {
+      display: block;
+      padding: 1rem;
+      margin: 50px 0;
+      text-align: center;
+      height: auto;
+    }
+    .presentation .logo {
+      display: none;
+    }
+    h1 {
+      font-weight: bold;
+    }
+    .presentation .img-div img {
+      width: 100%;
+      position: static;
+    }
+    .grid img, .grid svg {
+      width: 100%;
+    }
+    .grid .paragraphe {
+      left: 0;
+      right: 0;
+      width: 300px;
+    }
+    .section-title h2, .section-title .right {
+      width: 60%;
+      left: 5%;
+      font-size: 40px
+    }
   }
 
 </style>
