@@ -1,90 +1,151 @@
 <script setup lang="ts">
-    import { RouterLink } from 'vue-router';
-    import { useGlobalStore } from '@/stores/globalStore'
+import { reactive } from "vue";
+import { RouterLink } from "vue-router";
+const state = reactive({
+  dropdown: false,
+  collapse: false,
+});
 </script>
 
 <template>
-    <div class="navbar">
-        <RouterLink to="/" class="logo">
-            <img src="@/assets/image/logo.png" alt="Logo Naee">
-        </RouterLink>
-        <RouterLink to="#story">
-            <span>Notre histoire</span>
-        </RouterLink>
-        <RouterLink to="#conception">
-            <span>L'éco-conception</span>
-        </RouterLink>
-        <RouterLink to="#product">
-            <span>Nos produits</span>
-        </RouterLink>
-        <RouterLink to="#">
-            <span>Où nous trouver ?</span>
-        </RouterLink>
-        <RouterLink to="/panier">
-            <span v-if="useGlobalStore().cart.length > 0"> {{useGlobalStore().cart.length}} </span> <img class="cart" src="@/assets/image/cart.svg" alt="Panier">
-        </RouterLink>
+  <div class="navbar">
+    <RouterLink to="/">
+      <img src="@/assets/image/logo.svg" alt="Logo Naee" class="logo" />
+    </RouterLink>
+    <div class="links-div">
+      <span @click="state.dropdown = !state.dropdown"
+        >Blog <img src="@/assets/image/dropdown.svg" alt="Blog" />
+        <div class="dropdown" v-if="state.dropdown">
+          <ul>
+            <li>Notre histoire</li>
+            <li>L'éco-conception</li>
+            <li>Actualités</li>
+          </ul>
+        </div>
+      </span>
+      <RouterLink to="">
+        <span>Nos luminaires</span>
+      </RouterLink>
+      <RouterLink to="">
+        <span>Où trouver nos produits ?</span>
+      </RouterLink>
     </div>
+    <div class="mobile-links">
+      <img
+        v-if="!state.collapse"
+        @click="state.collapse = true"
+        src="@/assets/image/collapse.svg"
+        alt="Menu"
+      />
+      <img
+        src="@/assets/image/cancel.svg"
+        alt="annuler"
+        v-else
+        @click="state.collapse = false"
+      />
+      <div class="sidebar" v-if="state.collapse">
+        <ul>
+          <li>Notre histoire</li>
+          <hr />
+          <li>L'éco-conception</li>
+          <hr />
+          <li>Actualités</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-    .navbar {
-        padding-top: 70px;
-        padding-bottom: 20px;
-        font-size: 24px;
-        border-bottom: 3px solid #FDCD41;
-        font-weight: bold;
-    }
+.navbar {
+  padding: 2rem 10%;
+  font-size: 17px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
 
-    .navbar a {
-        color: inherit;
-        text-decoration: none;
-        display: inline-block;
-        cursor: pointer;
-    }
+.links-div {
+  text-align: right;
+}
 
-    .navbar a:not(:first-child) {
-        width: 200px;
-    }
+.links-div span:first-child {
+  position: relative;
+}
 
-    .navbar a:not(:first-child) :hover {
-        background-color: rgba(245, 245, 245, 0.622);
-        border-radius: 3px;
-    }
+.links-div > * {
+  margin-right: 1rem;
+}
 
-    .navbar :not(:first-child, :last-child) span {
-        width: 90%;
-        display: block;
-        padding: 5px;
-    }
+.navbar a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
 
-    .navbar :last-child span {
-        font-size: 1rem;
-        border-radius: 50%;
-        padding: 1px 5px;
-        background-color: #D7C1A3;
-        color: white;
-        margin-right: -8px;
-    }
+.mobile-links {
+  display: none;
+}
 
-    .cart {
-        vertical-align:bottom;
-        margin-bottom: 0.25rem;
-    }
+.dropdown {
+  position: absolute;
+  left: 0;
+  width: 150px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  text-align: left;
+  margin-top: 0.5rem;
+}
 
-    .logo {
-        width: inherit;
-        padding: 0 100px;
-        display: inline;
-    }
+.dropdown ul {
+  padding: 0;
+  cursor: pointer;
+}
 
-    .logo img {
-        width: 250px;
-        height:50px;
-    }
+.dropdown ul li {
+  margin: 1rem;
+  list-style: none;
+  font-weight: bold;
+}
 
-    span {
-        display: inline;
-    }
+@media screen and (max-width: 426px) {
+  .logo {
+    width: 120px;
+  }
+  .links-div {
+    display: none;
+  }
+  .mobile-links {
+    display: block;
+    text-align: right;
+  }
+  .sidebar {
+    top: 100px;
+    right: 0;
+    width: 70%;
+    position: absolute;
+    border: 1px solid whitesmoke;
+    text-align: right;
+    padding: 1rem 5%;
+    background-color: #fff;
+    z-index: 2;
+  }
 
+  .sidebar ul {
+    padding: 0;
+  }
 
+  .sidebar ul li {
+    list-style: none;
+    font-weight: bold;
+    margin: 1rem;
+  }
+
+  .sidebar hr {
+    border: none;
+    height: 1px;
+    background-color: whitesmoke;
+  }
+}
 </style>
