@@ -17,16 +17,16 @@ const state = reactive({
         >Blog <img src="@/assets/image/dropdown.svg" alt="Blog" />
         <div class="dropdown" v-if="state.dropdown">
           <ul>
-            <li>Notre histoire</li>
-            <li>L'éco-conception</li>
-            <li>Actualités</li>
+            <li><a href="/notre-histoire">Notre histoire</a></li>
+            <li><a href="#conception">L'éco-conception</a></li>
+            <li><a href="/blog">Actualités</a></li>
           </ul>
         </div>
       </span>
-      <RouterLink to="">
+      <RouterLink to="/shop">
         <span>Nos luminaires</span>
       </RouterLink>
-      <RouterLink to="">
+      <RouterLink to="#product">
         <span>Où trouver nos produits ?</span>
       </RouterLink>
     </div>
@@ -75,13 +75,13 @@ const state = reactive({
 
 .links-div > * {
   margin-right: 1rem;
+  cursor: pointer;
 }
 
 .navbar a {
   color: inherit;
   text-decoration: none;
   display: inline-block;
-  cursor: pointer;
 }
 
 .mobile-links {
@@ -91,11 +91,13 @@ const state = reactive({
 .dropdown {
   position: absolute;
   left: 0;
-  width: 150px;
+  width: 200px;
   border: 1px solid grey;
   border-radius: 5px;
   text-align: left;
   margin-top: 0.5rem;
+  z-index: 2;
+  background-color: #fff;
 }
 
 .dropdown ul {

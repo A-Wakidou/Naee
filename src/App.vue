@@ -13,10 +13,20 @@ import TheFooter from "@/components/TheFooter.vue";
 </template>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Pompiere&display=swap");
+@import url("https://fonts.cdnfonts.com/css/avenir");
 
 body {
-  font-family: "Pompiere", cursive;
+  font-family: "Avenir", serif;
+}
+
+@font-face {
+  font-family: Gliker;
+  src: url("./assets/font-glicker/Gliker-Regular.woff");
+}
+
+h1,
+h2 {
+  font-family: Gliker;
 }
 
 .button {

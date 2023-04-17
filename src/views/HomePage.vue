@@ -1,41 +1,41 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import { useGlobalStore } from "@/stores/globalStore";
-import type { Lamp } from "@/types";
+// import { reactive } from "vue";
+// import { useGlobalStore } from "@/stores/globalStore";
+// import type { Lamp } from "@/types";
 
-type StateShape = {
-  currentLampe: number;
-  lampes: {
-    name: string;
-    img: string;
-    price: number;
-    quantity: number;
-  }[];
-};
+// type StateShape = {
+//   currentLampe: number;
+//   lampes: {
+//     name: string;
+//     img: string;
+//     price: number;
+//     quantity: number;
+//   }[];
+// };
 
-const state = reactive<StateShape>({
-  currentLampe: 1 as number,
-  lampes: [
-    {
-      name: "Diane n°1",
-      img: "/diane1.svg",
-      price: 59,
-      quantity: 1,
-    },
-    {
-      name: "Diane n°2",
-      img: "/diane2.svg",
-      price: 59,
-      quantity: 1,
-    },
-    {
-      name: "Diane n°3",
-      img: "/diane3.svg",
-      price: 59,
-      quantity: 1,
-    },
-  ],
-});
+// const state = reactive<StateShape>({
+//   currentLampe: 1 as number,
+//   lampes: [
+//     {
+//       name: "Diane n°1",
+//       img: "/diane1.svg",
+//       price: 59,
+//       quantity: 1,
+//     },
+//     {
+//       name: "Diane n°2",
+//       img: "/diane2.svg",
+//       price: 59,
+//       quantity: 1,
+//     },
+//     {
+//       name: "Diane n°3",
+//       img: "/diane3.svg",
+//       price: 59,
+//       quantity: 1,
+//     },
+//   ],
+// });
 </script>
 
 <template>
@@ -72,7 +72,9 @@ const state = reactive<StateShape>({
           entièrement ? Comment recycler correctement un luminaire composé de
           différents matériaux vissés ou collés ensemble ?
         </p>
-        <button class="button">Lire notre histoire</button>
+        <RouterLink to="/notre-histoire">
+          <button class="button">Lire notre histoire</button>
+        </RouterLink>
       </div>
     </section>
     <section id="product">
@@ -96,7 +98,7 @@ const state = reactive<StateShape>({
     </section>
     <section id="conception">
       <div>
-        <img src="@/assets/image/svg3.svg" alt="" />
+        <img src="@/assets/image/sq.svg" alt="" />
       </div>
       <div>
         <span class="subtitle">NOS VALEURS</span>
@@ -281,7 +283,6 @@ h1 {
   align-items: center;
   grid-gap: 0 5%;
   font-size: 20px;
-  font-weight: bold;
 }
 
 section#story {
@@ -300,6 +301,7 @@ section#story {
 
 .subtitle {
   color: rgba(187, 114, 84, 1);
+  font-weight: bold;
 }
 
 #luminaires-div {

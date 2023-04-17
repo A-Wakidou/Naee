@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/views/HomePage.vue'
-import CartPage from '@/views/CartPage.vue'
+import StoryPage from '@/views/StoryPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,14 +11,16 @@ const router = createRouter({
       component: HomePage
     },
     {
-      path: '/panier',
-      name: 'panier',
-      component: CartPage
+      path: '/notre-histoire',
+      name: 'story-page',
+      component: StoryPage
     }
   ],
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
-      return { el: to.hash }
+      return {
+        el: to.hash, behavior: 'smooth',
+      }
     }
   }
 })
