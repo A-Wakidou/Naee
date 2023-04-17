@@ -45,11 +45,13 @@ const state = reactive({
       />
       <div class="sidebar" v-if="state.collapse">
         <ul>
-          <li>Notre histoire</li>
+          <li>
+            <Router-link to="/notre-histoire"> Notre histoire </Router-link>
+          </li>
           <hr />
-          <li>L'éco-conception</li>
+          <li><Router-link to="#conception">L'éco-conception </Router-link></li>
           <hr />
-          <li>Actualités</li>
+          <li><Router-link to="#blog">Actualités </Router-link></li>
         </ul>
       </div>
     </div>
