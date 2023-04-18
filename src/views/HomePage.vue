@@ -251,7 +251,6 @@ h1 {
 .presentation {
   display: grid;
   grid-template-columns: 45% 55%;
-  height: 600px;
   text-align: left;
 }
 
@@ -283,10 +282,6 @@ h1 {
   align-items: center;
   grid-gap: 0 5%;
   font-size: 20px;
-}
-
-section#story {
-  margin: 3rem 0;
 }
 
 #story img {
@@ -414,7 +409,10 @@ section#story {
   border: none;
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 769px) {
+  section {
+    padding: 0 5%;
+  }
   #newsletter input {
     width: 200px;
     margin: 0.5rem 0;
@@ -451,6 +449,9 @@ section#story {
   }
   #reseaux {
     left: 0.5%;
+  }
+  #reseaux a img {
+    width: 25%;
   }
   #newsletter {
     text-align: center;

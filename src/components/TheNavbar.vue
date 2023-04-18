@@ -113,7 +113,7 @@ const state = reactive({
   font-weight: bold;
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 769px) {
   .logo {
     width: 120px;
   }
