@@ -48,7 +48,9 @@
           des objets de décoration éco-responsables, made in France et aussi à
           un prix raisonnable !
         </p>
-        <button class="button">Découvrir</button>
+        <RouterLink to="/notre-histoire">
+          <button class="button">Découvrir</button>
+        </RouterLink>
       </div>
       <div class="img">
         <img src="@/assets/image/promis_rendu3D.png" alt="Image de Promis" />
@@ -119,15 +121,15 @@
       <div id="luminaires-div">
         <div>
           <img src="@/assets/image/diane1.svg" alt="" />
-          <router-link to="/">En savoir plus</router-link>
+          <a href="/https://www.shop.lamarquepromis.fr/">En savoir plus</a>
         </div>
         <div>
           <img src="@/assets/image/diane2.svg" alt="" />
-          <router-link to="/">En savoir plus</router-link>
+          <a to="/https://www.shop.lamarquepromis.fr/">En savoir plus</a>
         </div>
         <div>
           <img src="@/assets/image/diane3.svg" alt="" />
-          <router-link to="/">En savoir plus</router-link>
+          <a to="/https://www.shop.lamarquepromis.fr/">En savoir plus</a>
         </div>
       </div>
     </section>
