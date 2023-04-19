@@ -125,11 +125,11 @@
         </div>
         <div>
           <img src="@/assets/image/diane2.svg" alt="" />
-          <a to="/https://www.shop.lamarquepromis.fr/">En savoir plus</a>
+          <a href="/https://www.shop.lamarquepromis.fr/">En savoir plus</a>
         </div>
         <div>
           <img src="@/assets/image/diane3.svg" alt="" />
-          <a to="/https://www.shop.lamarquepromis.fr/">En savoir plus</a>
+          <a href="/https://www.shop.lamarquepromis.fr/">En savoir plus</a>
         </div>
       </div>
     </section>
