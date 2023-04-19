@@ -17,16 +17,18 @@ const state = reactive({
         >Blog <img src="@/assets/image/dropdown.svg" alt="Blog" />
         <div class="dropdown" v-if="state.dropdown">
           <ul>
-            <li><a href="/notre-histoire">Notre histoire</a></li>
-            <li><a href="#conception">L'éco-conception</a></li>
-            <li><a href="/blog">Actualités</a></li>
+            <li>
+              <RouterLink to="/notre-histoire">Notre histoire</RouterLink>
+            </li>
+            <li><RouterLink to="/#conception">L'éco-conception</RouterLink></li>
+            <li><RouterLink to="/blog">Actualités</RouterLink></li>
           </ul>
         </div>
       </span>
-      <RouterLink to="/shop">
+      <a href="https://www.shop.lamarquepromis.fr/">
         <span>Nos luminaires</span>
-      </RouterLink>
-      <RouterLink to="#product">
+      </a>
+      <RouterLink to="/#nous-retrouver">
         <span>Où trouver nos produits ?</span>
       </RouterLink>
     </div>
@@ -45,13 +47,17 @@ const state = reactive({
       />
       <div class="sidebar" v-if="state.collapse">
         <ul>
-          <li>
+          <li @click="state.collapse = false">
             <Router-link to="/notre-histoire"> Notre histoire </Router-link>
           </li>
           <hr />
-          <li><Router-link to="#conception">L'éco-conception </Router-link></li>
+          <li @click="state.collapse = false">
+            <Router-link to="/#conception">L'éco-conception </Router-link>
+          </li>
           <hr />
-          <li><Router-link to="#blog">Actualités </Router-link></li>
+          <li @click="state.collapse = false">
+            <Router-link to="/blog">Actualités </Router-link>
+          </li>
         </ul>
       </div>
     </div>
